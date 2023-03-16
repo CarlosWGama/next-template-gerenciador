@@ -3,6 +3,7 @@ import Image from 'next/image';
 import HeaderLayout from './layout-components/header';
 import NavLayout from './layout-components/nav-layout';
 import Script from 'next/script'
+import { NavHeaderLayout } from './layout-components/nav-header-layout';
 
 export interface AdminTemplateProps {
     children: ReactNode
@@ -85,33 +86,7 @@ export default function AdminTemplate(props: AdminTemplateProps) {
                                 <i className="ti-more"></i>
                             </a>
                         </div>
-                        <div className="navbar-container container-fluid">
-                            <ul className="nav-left">
-                                <li>
-                                    <div className="sidebar_toggle"><a href="#"><i className="ti-menu"></i></a></div>
-                                </li>
-                            </ul>
-                            <ul className="nav-right">
-                                <li className="user-profile header-notification">
-                                    <a href="#!" className="waves-effect waves-light">
-                                        {/* <span>{{session('usuario')->nome}}</span> */}
-                                        <i className="ti-angle-down"></i>
-                                    </a>
-                                    <ul className="show-notification profile-notification">
-                                        <li className="waves-effect waves-light">
-                                            <a href="{{route('admin.usuarios.edicao', ['id' => session('usuario')->id])}}">
-                                                <i className="ti-user"></i> Perfil
-                                            </a>
-                                        </li>
-                                        <li className="waves-effect waves-light">
-                                            <a href="{{route('logout">
-                                                <i className="ti-layout-sidebar-left"></i> Logout
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <NavHeaderLayout />
                     </div>
                 </nav>
 

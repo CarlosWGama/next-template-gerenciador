@@ -70,11 +70,7 @@ export default function LoginTemplate({children}:any) {
                                 <div className="text-center">
                                     <Image src="/assets/images/logo.png" width={300} height={100} alt="Logo" />
                                 </div>
-                                <div className="auth-box card">
-                                    
-                                    {children}
-
-                                </div>
+                                <div className="auth-box card">{children}</div>
                             </div>
                             {/* <!-- end of form --> */}
                         </div>
