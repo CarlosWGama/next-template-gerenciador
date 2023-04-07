@@ -14,7 +14,9 @@ export default function Login() {
     const handleSubmit = async ({email, senha}:any) => {
         setErroLogin('');
         if (email == "teste@teste.com" && senha == '123456') {
-            router.push('/admin/dashboard')
+            //router.push('/admin/dashboard')
+            //Força recarregar a página com seus scripts 
+            window.location.href='/admin/dashboard'; 
         } else {
             setErroLogin('Email ou senha incorreta!');
         }

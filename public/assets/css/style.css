@@ -6174,7 +6174,7 @@ table tbody .border-bottom-info td {
 	transition: opacity 0.3s linear;
 }
 
-body[themebg-pattern="theme1"] {
+body {
 	background-color: #448aff;
 }
 
