@@ -1,9 +1,15 @@
 "use client";
 
+import { useUsuarioService } from "../../../services/usuarios.services";
+
 export function NavHeaderLayout() {
 
 
+    const usuarioSrv = useUsuarioService();
+    const usuario = usuarioSrv.getUsuarioLogado();
+
     const handleLogout = async() => {
+        usuarioSrv.logout();
         window.location.href='/login'
     }
     
@@ -13,28 +19,13 @@ export function NavHeaderLayout() {
             <ul className="nav-right">
                 <li className="user-profile header-notification">
                     <a href="#!" className="waves-effect waves-light">
-                        <span>Admin</span>
+                        <span>{usuario?.nome}</span>
                         <i className="ti-angle-down"></i>
                     </a>
                     <ul className="show-notification profile-notification">
                         <li className="waves-effect waves-light">
-                            <a href="#!">
-                                <i className="ti-settings"></i> Settings
-                            </a>
-                        </li>
-                        <li className="waves-effect waves-light">
                             <a href="user-profile.html">
                                 <i className="ti-user"></i> Profile
-                            </a>
-                        </li>
-                        <li className="waves-effect waves-light">
-                            <a href="email-inbox.html">
-                                <i className="ti-email"></i> My Messages
-                            </a>
-                        </li>
-                        <li className="waves-effect waves-light">
-                            <a href="auth-lock-screen.html">
-                                <i className="ti-lock"></i> Lock Screen
                             </a>
                         </li>
                         <li className="waves-effect waves-light">

@@ -130,7 +130,7 @@ export default function AdminTemplate(props: AdminTemplateProps) {
         {/* <!-- Warning Section Ends --> */}
 
         {/* <!-- Required Jquery --> */}
-        <Script type="text/javascript" src="/assets/js/jquery/jquery.min.js" />
+        <Script type="text/javascript" src="/assets/js/jquery/jquery.min.js"  />
         <Script type="text/javascript" src="/assets/js/jquery-ui/jquery-ui.min.js" />
         <Script type="text/javascript" src="/assets/js/popper.js/popper.min.js"/>
         <Script type="text/javascript" src="/assets/js/bootstrap/js/bootstrap.min.js"/>
@@ -143,10 +143,10 @@ export default function AdminTemplate(props: AdminTemplateProps) {
         {/* <script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script> */}
 
         {/* <!-- menu js --> */}
-        <Script src="/assets/js/pcoded.min.js"/>
+        <Script src="/assets/js/pcoded.min.js" />
         <Script src="/assets/js/vertical/vertical-layout.min.js"/>
 
-        <Script type="text/javascript" src="/assets/js/script.min.js"/>
+        <Script type="text/javascript" src="/assets/js/script.min.js" strategy='lazyOnload' defer/>
          {/* 
         @if($tinyMCE)
         <Script src="/assets/js/tinymce/tinymce.min.js" referrerpolicy="origin"/>

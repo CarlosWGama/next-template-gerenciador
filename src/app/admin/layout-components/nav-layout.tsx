@@ -1,17 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useUsuarioService } from "../../../services/usuarios.services";
 
 
 
 export default function NavLayout() {
     //@ts-ignore
     const [ admin, module ] = usePathname().split('/')
+    const router = useRouter();
+    const usuarioSrv = useUsuarioService();
 
     
     const handleLogout = async() => {
-
+        usuarioSrv.logout();
+        window.location.href='/login'
     }
 
     // =====================================================================
@@ -54,74 +58,18 @@ export default function NavLayout() {
 
             {/* Usuário */}
             <ul className="pcoded-item pcoded-left-item">
-                <li className={module == 'dashboard' ? 'active pcoded-hasmenu' : 'pcoded-hasmenu'}>
-                    <a href="#" className="waves-effect waves-dark">
+                <li className={module == 'dashboard' ? 'active' : ''}>
+                    <Link href="/admin/usuarios/listar" className="waves-effect waves-dark">
                         <span className="pcoded-micon"><i className="ti-user"></i><b>U</b></span>
                         <span className="pcoded-mtext">Usuário</span>
                         <span className="pcoded-mcaret"></span>
-                    </a>
-                    <ul className="pcoded-submenu">
-                        <li className="">
-                            <Link href="/admin/usuarios/novo" className="waves-effect waves-dark">
-                                <span className="pcoded-micon"><i className="ti-angle-right"></i></span>
-                                <span className="pcoded-mtext">Novo</span>
-                                <span className="pcoded-mcaret"></span>
-                            </Link>
-                        </li>
-                        <li className="">
-                            <Link href="/admin/usuarios/listar" className="waves-effect waves-dark">
-                                <span className="pcoded-micon"><i className="ti-angle-right"></i></span>
-                                <span className="pcoded-mtext">Listar</span>
-                                <span className="pcoded-mcaret"></span>
-                            </Link>
-                        </li>
-                    </ul>
+                    </Link>
                 </li>
             </ul>
 
             {/* MACRO ---- PREFEITURA------  */}
-            <div className="pcoded-navigation-label">Prefeitura</div>
+            <div className="pcoded-navigation-label">Outras configurações...</div>
             
-            {/* Páginas */}
-            <ul className="pcoded-item pcoded-left-item">
-                <li className="@if(isset($menu) && $menu=='paginas') active @endif pcoded-hasmenu">
-                    <Link href="#" className="waves-effect waves-dark">
-                        <span className="pcoded-micon"><i className="ti-world"></i><b>Pag</b></span>
-                        <span className="pcoded-mtext">Páginas</span>
-                        <span className="pcoded-mcaret"></span>
-                    </Link>
-                    <ul className="pcoded-submenu">
-                        <li className=" ">
-                            <Link href="{{route('admin.prefeitura.pagina', 'localizacao" className="waves-effect waves-dark">
-                                <span className="pcoded-micon"><i className="ti-angle-right"></i></span>
-                                <span className="pcoded-mtext">Localização</span>
-                                <span className="pcoded-mcaret"></span>
-                            </Link>
-                        </li>
-                        <li className=" ">
-                            <Link href="{{route('admin.prefeitura.pagina', 'historia" className="waves-effect waves-dark">
-                                <span className="pcoded-micon"><i className="ti-angle-right"></i></span>
-                                <span className="pcoded-mtext">Historia</span>
-                                <span className="pcoded-mcaret"></span>
-                            </Link>
-                        </li>
-                        <li className=" ">
-                            <Link href="{{route('admin.prefeitura.pagina', 'prefeito" className="waves-effect waves-dark">
-                                <span className="pcoded-micon"><i className="ti-angle-right"></i></span>
-                                <span className="pcoded-mtext">Prefeito</span>
-                                <span className="pcoded-mcaret"></span>
-                            </Link>
-                        </li>
-                        <li className=" ">
-                            <Link href="{{route('admin.prefeitura.pagina', 'secretarias" className="waves-effect waves-dark">
-                                <span className="pcoded-micon"><i className="ti-angle-right"></i></span>
-                                <span className="pcoded-mtext">Secretarias</span>
-                                <span className="pcoded-mcaret"></span>
-                            </Link>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
 
         </div>
     </nav>
